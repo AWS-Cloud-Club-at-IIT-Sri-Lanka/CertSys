@@ -38,7 +38,7 @@
             user_list_location_txtBox = new TextBox();
             certificate_template_location_selectBtn = new Button();
             user_list_location_selectBtn = new Button();
-            certGenerateBtn = new Button();
+            SendEmailsBtn = new Button();
             label1 = new Label();
             label2 = new Label();
             smtp_password_txtBox = new TextBox();
@@ -47,6 +47,7 @@
             label4 = new Label();
             label5 = new Label();
             email_body_richtxtBox = new RichTextBox();
+            GenCertBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -83,7 +84,6 @@
             subtitle.TabIndex = 2;
             subtitle.Text = "Creating certificate and shares with holders";
             subtitle.TextAlign = ContentAlignment.MiddleCenter;
-            subtitle.Click += this.subtitle_Click;
             // 
             // labelCertTemplate
             // 
@@ -127,6 +127,7 @@
             certificate_template_location_selectBtn.TabIndex = 8;
             certificate_template_location_selectBtn.Text = "Select Certificate Template";
             certificate_template_location_selectBtn.UseVisualStyleBackColor = true;
+            certificate_template_location_selectBtn.Click += certificate_template_location_selectBtn_Click;
             // 
             // user_list_location_selectBtn
             // 
@@ -136,15 +137,17 @@
             user_list_location_selectBtn.TabIndex = 9;
             user_list_location_selectBtn.Text = "Select User List";
             user_list_location_selectBtn.UseVisualStyleBackColor = true;
+            user_list_location_selectBtn.Click += user_list_location_selectBtn_Click;
             // 
-            // certGenerateBtn
+            // SendEmailsBtn
             // 
-            certGenerateBtn.Location = new Point(556, 400);
-            certGenerateBtn.Name = "certGenerateBtn";
-            certGenerateBtn.Size = new Size(169, 38);
-            certGenerateBtn.TabIndex = 10;
-            certGenerateBtn.Text = "Generate and Send Emails";
-            certGenerateBtn.UseVisualStyleBackColor = true;
+            SendEmailsBtn.Location = new Point(556, 400);
+            SendEmailsBtn.Name = "SendEmailsBtn";
+            SendEmailsBtn.Size = new Size(169, 38);
+            SendEmailsBtn.TabIndex = 10;
+            SendEmailsBtn.Text = "Send Emails";
+            SendEmailsBtn.UseVisualStyleBackColor = true;
+            SendEmailsBtn.Click += SendEmailsBtn_Click;
             // 
             // label1
             // 
@@ -193,7 +196,6 @@
             label3.Size = new Size(86, 19);
             label3.TabIndex = 14;
             label3.Text = "Password:  ";
-            label3.Click += this.label3_Click;
             // 
             // label4
             // 
@@ -223,11 +225,22 @@
             email_body_richtxtBox.TabIndex = 18;
             email_body_richtxtBox.Text = "";
             // 
+            // GenCertBtn
+            // 
+            GenCertBtn.Location = new Point(381, 400);
+            GenCertBtn.Name = "GenCertBtn";
+            GenCertBtn.Size = new Size(169, 38);
+            GenCertBtn.TabIndex = 19;
+            GenCertBtn.Text = "Generate Certificates";
+            GenCertBtn.UseVisualStyleBackColor = true;
+            GenCertBtn.Click += GenCertBtn_Click;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(GenCertBtn);
             Controls.Add(email_body_richtxtBox);
             Controls.Add(label5);
             Controls.Add(smtp_password_txtBox);
@@ -236,7 +249,7 @@
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(certGenerateBtn);
+            Controls.Add(SendEmailsBtn);
             Controls.Add(user_list_location_selectBtn);
             Controls.Add(certificate_template_location_selectBtn);
             Controls.Add(user_list_location_txtBox);
@@ -249,7 +262,6 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Home";
             Text = "CertSys - AWS Cloud Club at Informatics Institute of Technology";
-            Load += this.Home_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -266,7 +278,7 @@
         private TextBox user_list_location_txtBox;
         private Button certificate_template_location_selectBtn;
         private Button user_list_location_selectBtn;
-        private Button certGenerateBtn;
+        private Button SendEmailsBtn;
         private Label label1;
         private Label label2;
         private TextBox smtp_password_txtBox;
@@ -275,5 +287,6 @@
         private Label label4;
         private Label label5;
         private RichTextBox email_body_richtxtBox;
+        private Button GenCertBtn;
     }
 }
