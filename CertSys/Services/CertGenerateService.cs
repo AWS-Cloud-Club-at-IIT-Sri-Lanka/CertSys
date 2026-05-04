@@ -20,11 +20,20 @@ namespace CertSys.Services
     {
         public void GenerateCertificates(string excelPath, string templatePath)
         {
+            // Keep existing behavior for the GenerateCertificates button
+            GenerateCertificatesAndReturn(excelPath, templatePath);
+        }
+
+        // New: Generate certificates and return list of (email, filePath)
+        public List<(string Email, string FilePath)> GenerateCertificatesAndReturn(string excelPath, string templatePath)
+        {
             var users = ReadUsersFromExcel(excelPath);
 
             ValidateEmails(users);
 
             string folderPath = CreateOutputFolder();
+
+            var results = new List<(string Email, string FilePath)>();
 
             foreach (var user in users)
             {
@@ -35,7 +44,11 @@ namespace CertSys.Services
                 string fullPath = Path.Combine(folderPath, fileName);
 
                 GeneratePdf(templatePath, user.Username, fullPath);
+
+                results.Add((user.Email, fullPath));
             }
+
+            return results;
         }
 
         // Read Excel using ClosedXML
